@@ -6,7 +6,6 @@ import { ApiFetch } from '../API/Api';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
 import Loader from 'components/Loader/Loader';
 import Modal from 'components/Moodal/Modal';
-import css from '../../index.css';
 import { Button } from 'components/Button/Button';
 
 export default class App extends Component {
@@ -22,13 +21,13 @@ export default class App extends Component {
 
   // =============fetchCats=====================
   async fetchCats() {
-    const { searchQuery, page, gallery } = this.state;
+    const { searchQuery, page } = this.state;
 
     this.setState({ isLoading: true, gallery: [] });
     try {
       const { data } = await ApiFetch(searchQuery, page);
       if (data.hits.length === 0) {
-        const { searchQuery, page, gallery } = this.state;
+        const { searchQuery } = this.state;
         return toast.error(`No pictures found with name ${searchQuery}`);
       }
       this.setState({ gallery: data.hits });
@@ -41,7 +40,7 @@ export default class App extends Component {
 
   // =============componentDidUpdate=====================
   componentDidUpdate = (prevProps, prevState) => {
-    const { searchQuery, page } = this.state;
+    const { page } = this.state;
 
     if (
       prevState.searchQuery !== this.state.searchQuery ||
