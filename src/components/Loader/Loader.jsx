@@ -1,5 +1,5 @@
 import React from 'react';
-import { cssTransition } from 'react-toastify';
+
 import { SpinnerInfinity } from 'spinners-react';
 import css from '../Loader/Loader.module.css';
 
