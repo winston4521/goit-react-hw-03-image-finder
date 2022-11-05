@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Searchbar from '../Searchbar/Searchbar';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { ApiFetch } from '../API/Api';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
 import Loader from 'components/Loader/Loader';
@@ -57,10 +55,6 @@ export default class App extends Component {
     this.setState(({ page }) => ({ page: page + 1 }));
   };
 
-  submitFormHandler = searchQuery => {
-    this.setState({ searchQuery, gallery: [], page: 1 });
-  };
-
   onModalOpen = largeImageURL => {
     console.log(largeImageURL);
     this.toggleModal();
@@ -73,6 +67,10 @@ export default class App extends Component {
     this.setState(({ showModal }) => ({
       showModal: !showModal,
     }));
+  };
+
+  submitFormHandler = searchQuery => {
+    this.setState({ searchQuery, gallery: [], page: 1 });
   };
 
   render() {
@@ -99,5 +97,3 @@ export default class App extends Component {
     );
   }
 }
-
-// +
