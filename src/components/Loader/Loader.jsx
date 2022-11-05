@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { SpinnerInfinity } from 'spinners-react';
 import css from '../Loader/Loader.module.css';
 
