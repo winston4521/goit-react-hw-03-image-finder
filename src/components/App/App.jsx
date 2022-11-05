@@ -23,14 +23,16 @@ export default class App extends Component {
   async fetchCats() {
     const { searchQuery, page } = this.state;
 
-    this.setState({ isLoading: true, gallery: [] });
+    this.setState({ isLoading: true });
     try {
       const { data } = await ApiFetch(searchQuery, page);
       if (data.hits.length === 0) {
         const { searchQuery } = this.state;
         return toast.error(`No pictures found with name ${searchQuery}`);
       }
-      this.setState({ gallery: data.hits });
+      this.setState(prevState => ({
+        gallery: [...prevState.gallery, ...data.hits],
+      }));
     } catch (error) {
       this.setState({ error });
     } finally {
@@ -55,7 +57,6 @@ export default class App extends Component {
   };
 
   onModalOpen = largeImageURL => {
-    console.log(largeImageURL);
     this.toggleModal();
     this.setState({
       largeImageURL: largeImageURL,
@@ -69,7 +70,7 @@ export default class App extends Component {
   };
 
   submitFormHandler = searchQuery => {
-    this.setState({ searchQuery, gallery: [], page: 1 });
+    this.setState({ searchQuery, page: 1 });
   };
 
   render() {
