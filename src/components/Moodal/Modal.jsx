@@ -35,3 +35,7 @@ export default class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  largeImageUrl: PropTypes.string.isRequired,
+};
