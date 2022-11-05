@@ -70,7 +70,7 @@ export default class App extends Component {
   };
 
   submitFormHandler = searchQuery => {
-    this.setState({ searchQuery, page: 1 });
+    this.setState({ searchQuery, page: 1, gallery: [] });
   };
 
   render() {
